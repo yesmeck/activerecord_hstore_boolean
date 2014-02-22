@@ -27,14 +27,14 @@ end
 
 ```
 
-Now you can boolean values.
+Now you can use boolean values.
 
 ```ruby
 product = Product.create(properties: { popular: true, color: 'white' })
 product.properties['popular'] #=> true
 ```
 
-And following values pass from params will be considered to be true, otherwise, to be false.
+Following values will be considered to be true, otherwise, to be false.
 
 ```ruby
 TRUE_VALUES = [true, 1, '1', 't', 'T', 'y', 'Y', 'yes', 'YES', 'true', 'TRUE']
