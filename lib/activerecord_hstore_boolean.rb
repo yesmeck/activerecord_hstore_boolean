@@ -20,7 +20,7 @@ module ActiverecordHstoreBoolean
 
       define_method(attr_name) do
         self[attr_name].each do |key, value|
-          self[attr_name][key] = value == STORED_TRUE_VALUE if keys.include?(key.to_s)
+          self[attr_name][key] = [STORED_TRUE_VALUE, true].include?(value) if keys.include?(key.to_s)
         end
       end
     end

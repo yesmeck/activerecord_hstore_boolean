@@ -12,7 +12,6 @@ describe ActiverecordHstoreBoolean do
       expect(product.properties['popular']).to be_true
       expect(product.properties['color']).to eq 'white'
     end
-
   end
 
   it 'normalize falue value' do
@@ -20,5 +19,14 @@ describe ActiverecordHstoreBoolean do
                                            product.reload
     expect(product.properties['popular']).to be_false
     expect(product.properties['color']).to eq 'white'
+  end
+
+  context 'get value twice' do
+    it do
+      product = Product.create(properties: { popular: true, color: 'white' })
+      product.reload
+      product.properties['popular']
+      expect(product.properties['popular']).to be_true
+    end
   end
 end
