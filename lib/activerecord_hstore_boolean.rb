@@ -10,9 +10,9 @@ module ActiverecordHstoreBoolean
   module ClassMethods
     def hstore_boolean_values(attr_name, *keys)
       keys.map!(&:to_sym)
-      before_save "normalize_#{attr_name}_boolean_value"
+      before_save "normalize_#{attr_name}_boolean_values"
 
-      define_method("normalize_#{attr_name}_boolean_value") do
+      define_method("normalize_#{attr_name}_boolean_values") do
         self[attr_name].to_options!.each do |key, value|
           self[attr_name][key] = TRUE_VALUES.include?(value) ? STORED_TRUE_VALUE : STORED_FALSE_VALUE if keys.include?(key)
         end
